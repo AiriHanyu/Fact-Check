@@ -41,11 +41,27 @@ with col4:
         st.session_state.tab = "DOCX"
 
 if st.session_state.tab == "TEXT":
-    st.text_area("", height=300)
+    user_text = st.text_area("", height=300)
+    if user_text:
+        st.markdown("### Teks yang Anda Masukkan:")
+        st.write(user_text)  # Menampilkan teks yang diinputkan
 
 elif st.session_state.tab == "URL":
-    st.text_input("")
+    user_url = st.text_input("")
+    if user_url:
+        # Misalnya kita ambil teks dari URL (ini butuh BeautifulSoup atau API lain buat ambil teks)
+        st.markdown("### Teks dari URL yang Anda Masukkan:")
+        st.write(user_url)  # Menampilkan URL yang diinputkan (bisa diambil teksnya)
 
 elif st.session_state.tab == "DOCX":
-    st.file_uploader("", type=["docx", "txt"])
+    uploaded_file = st.file_uploader("", type=["docx", "txt"])
+    if uploaded_file is not None:
+        # Untuk file DOCX, kamu bisa pake python-docx untuk membaca konten
+        from docx import Document
+        doc = Document(uploaded_file)
+        doc_text = ""
+        for para in doc.paragraphs:
+            doc_text += para.text + "\n"
+        st.markdown("### Teks dari file DOCX yang Anda Upload:")
+        st.write(doc_text)  # Menampilkan teks dari file DOCX
 
