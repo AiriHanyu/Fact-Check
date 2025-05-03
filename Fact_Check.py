@@ -18,6 +18,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown("---")
+
 if "tab" not in st.session_state:
     st.session_state.tab = "TEXT"
 
