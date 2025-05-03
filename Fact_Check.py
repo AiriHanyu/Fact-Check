@@ -18,18 +18,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-col1, col2, col3 = st.columns(3)
+option = st.radio("", ["TEXT", "URL", "DOCX"], horizontal=True)
 
-with col1:
-    text_clicked = st.button("TEXT")
-with col2:
-    url_clicked = st.button("URL")
-with col3:
-    doc_clicked = st.button("DOC")
+# Tampilkan input sesuai pilihan
+if option == "TEXT":
+    st.text_area("Masukkan teks di sini:", height=300)  # Menampilkan input untuk teks
+elif option == "URL":
+    st.text_input("Tempelkan link berita di sini:")  # Menampilkan input untuk URL
+elif option == "DOCX":
+    uploaded_file = st.file_uploader("Upload file .docx kamu di sini:", type=["docx"])  # Untuk upload file .docx
 
-if text_clicked:
-    st.text_area("Masukkan teks di sini:", height=300) 
-elif url_clicked:
-    st.text_input("Tempelkan link berita di sini:")  
-elif doc_clicked:
-    uploaded_file = st.file_uploader("Upload file .docx atau .txt kamu di sini:", type=["docx", "txt"])
