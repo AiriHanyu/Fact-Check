@@ -1,7 +1,5 @@
 import streamlit as st
 from util import set_background_color
-import requests
-from bs4 import BeautifulSoup
 
 set_background_color("#12B9C8")
 
