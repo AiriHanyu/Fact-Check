@@ -57,7 +57,7 @@ if st.session_state.tab:
             if st.session_state.tab == "TEXT" and user_text:
                 st.markdown(f"""
                     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                                background-color: ##101112;
+                                background-color: ##000000;
                                 max-width: 100%; overflow-wrap: break-word;
                                 word-wrap: break-word;">
                         {user_text}
@@ -68,7 +68,7 @@ if st.session_state.tab:
                 article_text = get_text_from_url(user_url)
                 st.markdown(f"""
                     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                                background-color: #101112;
+                                background-color: #000000;
                                 max-width: 100%; overflow-wrap: break-word;
                                 word-wrap: break-word;">
                         {article_text}
@@ -79,7 +79,7 @@ if st.session_state.tab:
                 doc_text = read_uploaded_file(uploaded_file)
                 st.markdown(f"""
                     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                                background-color: ##101112;
+                                background-color: ##000000;
                                 max-width: 100%; overflow-wrap: break-word;
                                 word-wrap: break-word;">
                         {doc_text.replace('\n','')}
