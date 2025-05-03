@@ -9,9 +9,11 @@ st.markdown("""
     <div style="color: black;">
         <br><br>
         <h3>AIMAR ANSHARI</h3>
+         <p style="color:black;">Email: aiimaransharii@gmail.com</p>
         <a href="https://instagram.com/aynshz_ryuxzy" style="color:black;">Instagram</a>
         <hr>
         <h3>MUTHMAINNAH NUR IZZAH</h3>
+         <p style="color:black;">Email: innzzh@gmail.com</p>
         <a href="https://instagram.com/innzzh" style="color:black;">Instagram</a>
     </div>
 """, unsafe_allow_html=True)
