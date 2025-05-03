@@ -1,5 +1,6 @@
 import streamlit as st
 from util import set_background_color, get_text_from_url, read_uploaded_file
+import html
 
 set_background_color("#12B9C8")
 
