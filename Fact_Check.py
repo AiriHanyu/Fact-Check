@@ -53,22 +53,36 @@ if st.session_state.tab:
     with col3:
         view = st.button("View")
 
-    if view:
+if view:
+    with st.container():
         if st.session_state.tab == "TEXT" and user_text:
             st.markdown("### Teks yang Anda Masukkan:")
-            st.write(user_text)
-    
+            st.markdown(f"""
+                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9">
+                    {user_text}
+                </div>
+            """, unsafe_allow_html=True)
+
         elif st.session_state.tab == "URL" and user_url:
             st.markdown("### Teks dari URL yang Anda Masukkan:")
-            st.write(user_url)
-    
+            st.markdown(f"""
+                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9">
+                    {user_url}
+                </div>
+            """, unsafe_allow_html=True)
+
         elif st.session_state.tab == "DOC" and uploaded_file:
             doc = Document(uploaded_file)
             doc_text = ""
             for para in doc.paragraphs:
-                doc_text += para.text + "\n"
+                doc_text += para.text + "<br>"
             st.markdown("### Teks dari file DOC yang Anda Upload:")
-            st.write(doc_text)
+            st.markdown(f"""
+                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9">
+                    {doc_text}
+                </div>
+            """, unsafe_allow_html=True)
+
     
 
 
