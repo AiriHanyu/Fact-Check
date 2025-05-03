@@ -38,6 +38,11 @@ with col4:
     if st.button("DOCX", use_container_width=True):
         st.session_state.tab = "DOCX"
 
+st.markdown(
+    "<hr style='border: 1.5px solid black; margin: 20px 0;'>",
+    unsafe_allow_html=True
+)
+
 if st.session_state.tab == "TEXT":
     st.text_area("Masukkan teks di sini:", height=300)
 elif st.session_state.tab == "URL":
