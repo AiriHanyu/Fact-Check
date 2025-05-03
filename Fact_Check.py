@@ -85,6 +85,7 @@ if st.session_state.tab:
                         {doc_text.replace('\n','')}
                     </div>
                 """, unsafe_allow_html=True)
+             if st.button("Fact Check"):
     
 
 
