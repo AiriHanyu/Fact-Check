@@ -77,13 +77,12 @@ if st.session_state.tab:
                 
             elif st.session_state.tab == "DOC" and uploaded_file:
                 doc_text = read_uploaded_file(uploaded_file)
-                escaped_text = html.escape(doc_text)
                 st.markdown(f"""
                     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
                                 background-color: #ffffff; color: black;
                                 max-width: 100%; overflow-wrap: break-word;
                                 word-wrap: break-word;">
-                        {doc_text}
+                        {doc_text.replace('/n')}
                     </div>
                 """, unsafe_allow_html=True)
     
