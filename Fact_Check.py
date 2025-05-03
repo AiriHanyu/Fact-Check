@@ -65,14 +65,16 @@ if view:
                 </div>
             """, unsafe_allow_html=True)
 
-
         elif st.session_state.tab == "URL" and user_url:
             st.markdown(f"""
-                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9">
-                    {user_url}
+                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
+                            background-color: #ffffff; color: black;
+                            max-width: 100%; overflow-wrap: break-word;
+                            word-wrap: break-word;">
+                    {user_text}
                 </div>
             """, unsafe_allow_html=True)
-
+            
         elif st.session_state.tab == "DOC" and uploaded_file:
             doc = Document(uploaded_file)
             doc_text = ""
