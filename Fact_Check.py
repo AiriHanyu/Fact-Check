@@ -51,7 +51,7 @@ if st.session_state.tab:
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
     with col3:
-    view = st.button("View")
+        view = st.button("View")
 
     if view:
         if st.session_state.tab == "TEXT" and user_text:
