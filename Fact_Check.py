@@ -38,32 +38,35 @@ with col4:
     if st.button("DOCX", use_container_width=True):
         st.session_state.tab = "DOCX"
 
-# Menampilkan input sesuai tab yang dipilih
-if st.session_state.tab == "TEXT":
-    user_text = st.text_area("Masukkan teks di sini:", height=300)
-elif st.session_state.tab == "URL":
-    user_url = st.text_input("Tempelkan link berita di sini:")
-elif st.session_state.tab == "DOCX":
-    uploaded_file = st.file_uploader("Upload file .docx atau .txt kamu di sini:", type=["docx", "txt"])
+if "tab" not in st.session_state:
+    st.session_state.tab = None
 
-# Tombol Kirim muncul setelah input, dan hasilnya tampil setelah tombol kirim di klik
-col1, col2, col3 = st.columns([1, 2, 1])  # Tombol kirim di kolom tengah
-with col2:
-    if st.button("Kirim"):
-        if st.session_state.tab == "TEXT" and user_text:
-            st.markdown("### Teks yang Anda Masukkan:")
-            st.write(user_text)  # Menampilkan teks yang diinputkan
+# Tampilkan kolom input dan tombol kirim hanya kalau tab udah dipilih
+if "tab" in st.session_state:
+    if st.session_state.tab == "TEXT":
+        user_text = st.text_area("", height=300)
+    elif st.session_state.tab == "URL":
+        user_url = st.text_input("")
+    elif st.session_state.tab == "DOCX":
+        uploaded_file = st.file_uploader("", type=["docx", "txt"])
 
-        elif st.session_state.tab == "URL" and user_url:
-            st.markdown("### Teks dari URL yang Anda Masukkan:")
-            st.write(user_url)  # Menampilkan URL yang diinputkan
+    # Tombol Kirim (tengah)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("Kirim"):
+            if st.session_state.tab == "TEXT" and user_text:
+                st.markdown("### Teks yang Anda Masukkan:")
+                st.write(user_text)
 
-        elif st.session_state.tab == "DOCX" and uploaded_file:
-            # Membaca file DOCX dan menampilkan isinya
-            from docx import Document
-            doc = Document(uploaded_file)
-            doc_text = ""
-            for para in doc.paragraphs:
-                doc_text += para.text + "\n"
-            st.markdown("### Teks dari file DOCX yang Anda Upload:")
-            st.write(doc_text)  # Menampilkan teks dari file DOCX
+            elif st.session_state.tab == "URL" and user_url:
+                st.markdown("### Teks dari URL yang Anda Masukkan:")
+                st.write(user_url)
+
+            elif st.session_state.tab == "DOCX" and uploaded_file:
+                from docx import Document
+                doc = Document(uploaded_file)
+                doc_text = ""
+                for para in doc.paragraphs:
+                    doc_text += para.text + "\n"
+                st.markdown("### Teks dari file DOCX yang Anda Upload:")
+                st.write(doc_text)
