@@ -45,7 +45,7 @@ if st.session_state.tab:
         user_text = st.text_area("", height=300)
     elif st.session_state.tab == "URL":
         user_url = st.text_input("")
-    elif st.session_state.tab == "DOCX":
+    elif st.session_state.tab == "DOC":
         uploaded_file = st.file_uploader("", type=["docx", "txt"])
 
     st.markdown("<br>", unsafe_allow_html=True)
@@ -60,10 +60,10 @@ if st.session_state.tab:
                 st.markdown("### Teks dari URL yang Anda Masukkan:")
                 st.write(user_url)
 
-            elif st.session_state.tab == "DOCX" and uploaded_file:
+            elif st.session_state.tab == "DOC" and uploaded_file:
                 doc = Document(uploaded_file)
                 doc_text = ""
                 for para in doc.paragraphs:
                     doc_text += para.text + "\n"
-                st.markdown("### Teks dari file DOCX yang Anda Upload:")
+                st.markdown("### Teks dari file DOC yang Anda Upload:")
                 st.write(doc_text)
