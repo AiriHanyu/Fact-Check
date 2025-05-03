@@ -18,31 +18,18 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-import streamlit as st
+col1, col2, col3 = st.columns(3)
 
-# Atur tombol dalam 3 kolom kecil yang nempel
-col1, col2, col3 = st.columns([1, 1, 1])
-
-# Simpan state aktif di session_state
-if "active_tab" not in st.session_state:
-    st.session_state.active_tab = "TEXT"
-
-# Bikin tombol & update state
 with col1:
-    if st.button("TEXT"):
-        st.session_state.active_tab = "TEXT"
+    text_clicked = st.button("TEXT")
 with col2:
-    if st.button("URL"):
-        st.session_state.active_tab = "URL"
+    url_clicked = st.button("URL")
 with col3:
-    if st.button("DOC"):
-        st.session_state.active_tab = "DOC"
+    doc_clicked = st.button("DOC")
 
-# Tampilkan input berdasarkan tab aktif
-if st.session_state.active_tab == "TEXT":
-    st.text_area("Masukkan teks di sini:", height=300)
-elif st.session_state.active_tab == "URL":
-    st.text_input("Tempelkan link berita di sini:")
-elif st.session_state.active_tab == "DOC":
+if text_clicked:
+    st.text_area("Masukkan teks di sini:", height=300) 
+elif url_clicked:
+    st.text_input("Tempelkan link berita di sini:")  
+elif doc_clicked:
     uploaded_file = st.file_uploader("Upload file .docx, .txt, atau .pdf kamu di sini:", type=["docx", "txt", "pdf"])
-
