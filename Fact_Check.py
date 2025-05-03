@@ -16,4 +16,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+option = st.radio("Pilih jenis input yang ingin kamu cek:", ["TEXT", "URL", "DOCX"], horizontal=True)
 
+if option == "TEXT":
+    user_text = st.text_area("Masukkan teks di sini:")
+elif option == "URL":
+    user_url = st.text_input("Tempelkan link berita di sini:")
+elif option == "DOCX":
+    uploaded_file = st.file_uploader("Upload file .docx kamu di sini:", type=["docx"])
+
+if st.button("Cek Fakta"):
+    st.write("Fungsi pengecekan fakta dijalankan di sini 🔍")
