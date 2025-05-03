@@ -80,8 +80,11 @@ if view:
             for para in doc.paragraphs:
                 doc_text += para.text + "<br>"
             st.markdown(f"""
-                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9">
-                    {doc_text}
+                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
+                            background-color: #ffffff; color: black;
+                            max-width: 100%; overflow-wrap: break-word;
+                            word-wrap: break-word;">
+                    {article_text}
                 </div>
             """, unsafe_allow_html=True)
 
