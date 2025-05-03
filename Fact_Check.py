@@ -18,7 +18,27 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-option = st.radio("", ["TEXT", "URL", "DOCX"], horizontal=True)
+st.markdown("""
+    <style>
+        .center-radio label {
+            display: inline-block;
+            margin: 0 15px;
+            color: black !important;  /* warna teks */
+            font-weight: normal;
+        }
+        .center-radio div[role="radiogroup"] {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+option = st.radio(
+    "", 
+    ["TEXT", "URL", "DOCX"],
+    horizontal=True,
+    key="input_option"
+)
 
 # Tampilkan input sesuai pilihan
 if option == "TEXT":
