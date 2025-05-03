@@ -40,7 +40,6 @@ with col4:
     if st.button("DOCX", use_container_width=True):
         st.session_state.tab = "DOCX"
 
-# Menentukan input yang sesuai berdasarkan tab yang dipilih
 if st.session_state.tab == "TEXT":
     user_text = st.text_area("Masukkan teks di sini:", height=300)
 elif st.session_state.tab == "URL":
@@ -48,25 +47,24 @@ elif st.session_state.tab == "URL":
 elif st.session_state.tab == "DOCX":
     uploaded_file = st.file_uploader("Upload file .docx atau .txt kamu di sini:", type=["docx", "txt"])
 
-# Tombol untuk mengirim dan menampilkan hasil input
-if st.button("Kirim"):
-    # Cek jenis input dan tampilkan hasilnya
-    if st.session_state.tab == "TEXT" and user_text:
-        st.markdown("### Teks yang Anda Masukkan:")
-        st.write(user_text)  # Menampilkan teks yang diinputkan
+col1, col2, col3 = st.columns([1, 2, 1]) 
+with col2:
+    if st.button("Kirim"):
+        # Cek jenis input dan tampilkan hasilnya
+        if st.session_state.tab == "TEXT" and user_text:
+            st.markdown("### Teks yang Anda Masukkan:")
+            st.write(user_text)  # Menampilkan teks yang diinputkan
 
-    elif st.session_state.tab == "URL" and user_url:
-        st.markdown("### Teks dari URL yang Anda Masukkan:")
-        st.write(user_url)  # Menampilkan URL yang diinputkan
+        elif st.session_state.tab == "URL" and user_url:
+            st.markdown("### Teks dari URL yang Anda Masukkan:")
+            st.write(user_url)  # Menampilkan URL yang diinputkan
 
-    elif st.session_state.tab == "DOCX" and uploaded_file:
-        # Membaca file DOCX dan menampilkan isinya
-        from docx import Document
-        doc = Document(uploaded_file)
-        doc_text = ""
-        for para in doc.paragraphs:
-            doc_text += para.text + "\n"
-        st.markdown("### Teks dari file DOCX yang Anda Upload:")
-        st.write(doc_text)  # Menampilkan teks dari file DOCX
-
-
+        elif st.session_state.tab == "DOCX" and uploaded_file:
+            # Membaca file DOCX dan menampilkan isinya
+            from docx import Document
+            doc = Document(uploaded_file)
+            doc_text = ""
+            for para in doc.paragraphs:
+                doc_text += para.text + "\n"
+            st.markdown("### Teks dari file DOCX yang Anda Upload:")
+            st.write(doc_text)  # Menampilkan teks dari file DOCX
