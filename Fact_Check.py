@@ -47,7 +47,7 @@ elif st.session_state.tab == "URL":
 elif st.session_state.tab == "DOCX":
     uploaded_file = st.file_uploader("Upload file .docx atau .txt kamu di sini:", type=["docx", "txt"])
 
-col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
+col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
 with col3:
     if st.button("Kirim"):
         # Cek jenis input dan tampilkan hasilnya
