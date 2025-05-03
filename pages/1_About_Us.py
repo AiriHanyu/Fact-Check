@@ -3,14 +3,16 @@ from util import set_background_color
 
 set_background_color("#12B9C8")
 
-st.title("About Us")
+st.markdown('<h1 style="color:black; font-size: 100px; text-align: center;">About Us</h1>', unsafe_allow_html=True)
 
 st.markdown("""
-### AIMAR ANSHARI  
-[Instagram](https://instagram.com/aynshz_ryuxzy)
-
----
-
-### MUTHMAINNAH NUR IZZAH  
-[Instagram](https://instagram.com/innzzh)
-""")
+    <div style="text-align: center; color: black;">
+        ### AIMAR ANSHARI  
+        [Instagram](https://instagram.com/aynshz_ryuxzy)
+        <br><br>
+        ---  
+        <br><br>
+        ### MUTHMAINNAH NUR IZZAH  
+        [Instagram](https://instagram.com/innzzh)
+    </div>
+""", unsafe_allow_html=True)
