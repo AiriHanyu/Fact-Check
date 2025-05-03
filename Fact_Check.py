@@ -32,4 +32,4 @@ if text_clicked:
 elif url_clicked:
     st.text_input("Tempelkan link berita di sini:")  
 elif doc_clicked:
-    uploaded_file = st.file_uploader("Upload file .docx, .txt, atau .pdf kamu di sini:", type=["docx", "txt", "pdf"])
+    uploaded_file = st.file_uploader("Upload file .docx atau .txt kamu di sini:", type=["docx", "txt"])
