@@ -11,7 +11,7 @@ st.markdown("""
         <h3>AIMAR ANSHARI</h3>
          <p style="color:black;">Email: aiimaransharii@gmail.com</p>
         <a href="https://instagram.com/aynshz_ryuxzy" style="color:black;">Instagram</a>
-        <hr>
+         <hr style="border-color:black;">
         <h3>MUTHMAINNAH NUR IZZAH</h3>
          <p style="color:black;">Email: innzzh@gmail.com</p>
         <a href="https://instagram.com/innzzh" style="color:black;">Instagram</a>
