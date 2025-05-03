@@ -7,12 +7,12 @@ st.markdown('<h1 style="color:black; font-size: 100px; text-align: center;">ABOU
 
 st.markdown("""
     <div style="text-align: center; color: black;">
-        ### AIMAR ANSHARI  
-        [Instagram](https://instagram.com/aynshz_ryuxzy)
+        <h3>AIMAR ANSHARI</h3>
+        <a href="https://instagram.com/aynshz_ryuxzy" style="color:black;">Instagram</a>
         <br><br>
-        ---  
+        <hr>
         <br><br>
-        ### MUTHMAINNAH NUR IZZAH  
-        [Instagram](https://instagram.com/innzzh)
+        <h3>MUTHMAINNAH NUR IZZAH</h3>
+        <a href="https://instagram.com/innzzh" style="color:black;">Instagram</a>
     </div>
 """, unsafe_allow_html=True)
