@@ -56,19 +56,17 @@ if st.session_state.tab:
 if view:
     with st.container():
         if st.session_state.tab == "TEXT" and user_text:
-            st.markdown("### Teks yang Anda Masukkan:")
             st.markdown(f"""
                 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
                             background-color: #ffffff; color: black;
                             max-width: 100%; overflow-wrap: break-word;
-                            word-wrap: break-word; white-space: pre-wrap;">
+                            word-wrap: break-word;">
                     {user_text}
                 </div>
             """, unsafe_allow_html=True)
 
 
         elif st.session_state.tab == "URL" and user_url:
-            st.markdown("### Teks dari URL yang Anda Masukkan:")
             st.markdown(f"""
                 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9">
                     {user_url}
@@ -80,7 +78,6 @@ if view:
             doc_text = ""
             for para in doc.paragraphs:
                 doc_text += para.text + "<br>"
-            st.markdown("### Teks dari file DOC yang Anda Upload:")
             st.markdown(f"""
                 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9">
                     {doc_text}
