@@ -8,6 +8,6 @@ st.markdown("""
 
 ---
 
-### DEWI AURA SYALSABILLAH F  
-[Instagram](https://instagram.com/quivyy_)
+### MUTHMAINNAH NUR IZZAH  
+[Instagram](https://instagram.com/innzzh)
 """)
