@@ -59,7 +59,8 @@ if view:
             st.markdown("### Teks yang Anda Masukkan:")
             st.markdown(f"""
                 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                            background-color: #f9f9f9; max-width: 100%; overflow-wrap: break-word;
+                            background-color: #ffffff; color: black;
+                            max-width: 100%; overflow-wrap: break-word;
                             word-wrap: break-word; white-space: pre-wrap;">
                     {user_text}
                 </div>
