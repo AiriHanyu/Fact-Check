@@ -51,24 +51,24 @@ if st.session_state.tab:
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
     with col3:
-    kirim = st.button("Kirim")
+    view = st.button("View")
 
-if kirim:
-    if st.session_state.tab == "TEXT" and user_text:
-        st.markdown("### Teks yang Anda Masukkan:")
-        st.write(user_text)
-
-    elif st.session_state.tab == "URL" and user_url:
-        st.markdown("### Teks dari URL yang Anda Masukkan:")
-        st.write(user_url)
-
-    elif st.session_state.tab == "DOC" and uploaded_file:
-        doc = Document(uploaded_file)
-        doc_text = ""
-        for para in doc.paragraphs:
-            doc_text += para.text + "\n"
-        st.markdown("### Teks dari file DOC yang Anda Upload:")
-        st.write(doc_text)
+    if view:
+        if st.session_state.tab == "TEXT" and user_text:
+            st.markdown("### Teks yang Anda Masukkan:")
+            st.write(user_text)
+    
+        elif st.session_state.tab == "URL" and user_url:
+            st.markdown("### Teks dari URL yang Anda Masukkan:")
+            st.write(user_url)
+    
+        elif st.session_state.tab == "DOC" and uploaded_file:
+            doc = Document(uploaded_file)
+            doc_text = ""
+            for para in doc.paragraphs:
+                doc_text += para.text + "\n"
+            st.markdown("### Teks dari file DOC yang Anda Upload:")
+            st.write(doc_text)
     
 
 
