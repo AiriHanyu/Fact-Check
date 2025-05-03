@@ -51,24 +51,26 @@ if st.session_state.tab:
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
     with col3:
-        if st.button("Kirim"):
-            if st.session_state.tab == "TEXT" and user_text:
-                st.markdown("### Teks yang Anda Masukkan:")
-                st.write(user_text)
+    kirim = st.button("Kirim")
 
-            elif st.session_state.tab == "URL" and user_url:
-                st.markdown("### Teks dari URL yang Anda Masukkan:")
-                st.write(user_url)
+if kirim:
+    if st.session_state.tab == "TEXT" and user_text:
+        st.markdown("### Teks yang Anda Masukkan:")
+        st.write(user_text)
 
-            elif st.session_state.tab == "DOC" and uploaded_file:
-                doc = Document(uploaded_file)
-                doc_text = ""
-                for para in doc.paragraphs:
-                    doc_text += para.text + "\n"
-                st.markdown("### Teks dari file DOC yang Anda Upload:")
-                st.write(doc_text)
+    elif st.session_state.tab == "URL" and user_url:
+        st.markdown("### Teks dari URL yang Anda Masukkan:")
+        st.write(user_url)
 
-st.markdown("<br>", unsafe_allow_html=True)
+    elif st.session_state.tab == "DOC" and uploaded_file:
+        doc = Document(uploaded_file)
+        doc_text = ""
+        for para in doc.paragraphs:
+            doc_text += para.text + "\n"
+        st.markdown("### Teks dari file DOC yang Anda Upload:")
+        st.write(doc_text)
+    
+
 
 st.markdown(
     "<hr style='border: 1.5px solid black; margin: 20px 0;'>",
