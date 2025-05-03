@@ -18,7 +18,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-option = st.radio("", ["TEXT", "URL", "DOC"], horizontal=True)
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    text_clicked = st.button("TEXT")
+with col2:
+    url_clicked = st.button("URL")
+with col3:
+    doc_clicked = st.button("DOC")
 
 if option == "TEXT":
     st.text_area("Masukkan teks di sini:", height=300) 
