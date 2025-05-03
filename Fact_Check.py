@@ -51,39 +51,39 @@ if st.session_state.tab:
     with col3:
         view = st.button("View")
 
-if view:
-    with st.container():
-        if st.session_state.tab == "TEXT" and user_text:
-            st.markdown(f"""
-                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                            background-color: #ffffff; color: black;
-                            max-width: 100%; overflow-wrap: break-word;
-                            word-wrap: break-word;">
-                    {user_text}
-                </div>
-            """, unsafe_allow_html=True)
-
-        elif st.session_state.tab == "URL" and user_url:
-            article_text = get_text_from_url(user_url)
-            st.markdown(f"""
-                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                            background-color: #ffffff; color: black;
-                            max-width: 100%; overflow-wrap: break-word;
-                            word-wrap: break-word;">
-                    {article_text}
-                </div>
-            """, unsafe_allow_html=True)
-            
-        elif st.session_state.tab == "DOC" and uploaded_file:
-            doc_text = read_uploaded_file(uploaded_file)
-            st.markdown(f"""
-                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                            background-color: #ffffff; color: black;
-                            max-width: 100%; overflow-wrap: break-word;
-                            word-wrap: break-word;">
-                    {doc_text.replace('\n', '<br>')}
-                </div>
-            """, unsafe_allow_html=True)
+    if view:
+        with st.container():
+            if st.session_state.tab == "TEXT" and user_text:
+                st.markdown(f"""
+                    <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
+                                background-color: #ffffff; color: black;
+                                max-width: 100%; overflow-wrap: break-word;
+                                word-wrap: break-word;">
+                        {user_text}
+                    </div>
+                """, unsafe_allow_html=True)
+    
+            elif st.session_state.tab == "URL" and user_url:
+                article_text = get_text_from_url(user_url)
+                st.markdown(f"""
+                    <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
+                                background-color: #ffffff; color: black;
+                                max-width: 100%; overflow-wrap: break-word;
+                                word-wrap: break-word;">
+                        {article_text}
+                    </div>
+                """, unsafe_allow_html=True)
+                
+            elif st.session_state.tab == "DOC" and uploaded_file:
+                doc_text = read_uploaded_file(uploaded_file)
+                st.markdown(f"""
+                    <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
+                                background-color: #ffffff; color: black;
+                                max-width: 100%; overflow-wrap: break-word;
+                                word-wrap: break-word;">
+                        {doc_text.replace('\n', '<br>')}
+                    </div>
+                """, unsafe_allow_html=True)
     
 
 
