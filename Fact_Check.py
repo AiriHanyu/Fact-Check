@@ -38,14 +38,15 @@ with col4:
     if st.button("DOCX", use_container_width=True):
         st.session_state.tab = "DOCX"
 
-st.markdown(
-    "<hr style='border: 1.5px solid black; margin: 20px 0;'>",
-    unsafe_allow_html=True
-)
-
 if st.session_state.tab == "TEXT":
-    st.text_area("Masukkan teks di sini:", height=300)
+    st.markdown("<p style='text-align: center; color: black;'>Masukkan teks di sini:</p>", unsafe_allow_html=True)
+    st.text_area("", height=300)
+
 elif st.session_state.tab == "URL":
-    st.text_input("Tempelkan link berita di sini:")
+    st.markdown("<p style='text-align: center; color: black;'>Tempelkan link berita di sini:</p>", unsafe_allow_html=True)
+    st.text_input("")
+
 elif st.session_state.tab == "DOCX":
-    st.file_uploader("Upload file .docx, .txt, atau .pdf kamu di sini:", type=["docx", "txt", "pdf"])
+    st.markdown("<p style='text-align: center; color: black;'>Upload file .docx atau .txt kamu di sini:</p>", unsafe_allow_html=True)
+    st.file_uploader("", type=["docx", "txt"])
+
