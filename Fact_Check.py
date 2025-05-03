@@ -18,11 +18,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-option = st.radio("", ["TEXT", "URL", "DOCX"], horizontal=True)
+option = st.radio("", ["TEXT", "URL", "DOC"], horizontal=True)
 
 if option == "TEXT":
     st.text_area("Masukkan teks di sini:", height=300) 
 elif option == "URL":
     st.text_input("Tempelkan link berita di sini:")  
-elif option == "DOCX":
-    uploaded_file = st.file_uploader("Upload file .docx kamu di sini:", type=["docx"]) 
+elif option == "DOCX/TXT/PDF":
+    uploaded_file = st.file_uploader("Upload file .docx, .txt kamu di sini:", type=["docx", "txt"])
+
