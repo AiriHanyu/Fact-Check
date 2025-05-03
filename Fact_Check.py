@@ -55,18 +55,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h3 style='text-align: center; color: black;'>Pilih jenis input yang ingin kamu cek:</h3>", unsafe_allow_html=True)
-
 option = st.radio("", ["TEXT", "URL", "DOCX"], horizontal=True)
 
 # Tampilkan input sesuai pilihan
 if option == "TEXT":
-    st.text_area("Masukkan teks di sini:", height=300)  # Menampilkan input untuk teks
+    st.text_area("Masukkan teks di sini:", height=300) 
 elif option == "URL":
-    st.text_input("Tempelkan link berita di sini:")  # Menampilkan input untuk URL
+    st.text_input("Tempelkan link berita di sini:")  
 elif option == "DOCX":
-    uploaded_file = st.file_uploader("Upload file .docx kamu di sini:", type=["docx"])  # Untuk upload file .docx
+    uploaded_file = st.file_uploader("Upload file .docx kamu di sini:", type=["docx"]) 
 
-# Tombol untuk cek fakta
 if st.button("Cek Fakta"):
     st.write("Fungsi pengecekan fakta dijalankan di sini 🔍")
