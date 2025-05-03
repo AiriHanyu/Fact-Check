@@ -40,23 +40,27 @@ with col4:
     if st.button("DOCX", use_container_width=True):
         st.session_state.tab = "DOCX"
 
+# Menentukan input yang sesuai berdasarkan tab yang dipilih
 if st.session_state.tab == "TEXT":
-    user_text = st.text_area("", height=300)
-    if user_text:
+    user_text = st.text_area("Masukkan teks di sini:", height=300)
+elif st.session_state.tab == "URL":
+    user_url = st.text_input("Tempelkan link berita di sini:")
+elif st.session_state.tab == "DOCX":
+    uploaded_file = st.file_uploader("Upload file .docx atau .txt kamu di sini:", type=["docx", "txt"])
+
+# Tombol untuk mengirim dan menampilkan hasil input
+if st.button("Kirim"):
+    # Cek jenis input dan tampilkan hasilnya
+    if st.session_state.tab == "TEXT" and user_text:
         st.markdown("### Teks yang Anda Masukkan:")
         st.write(user_text)  # Menampilkan teks yang diinputkan
 
-elif st.session_state.tab == "URL":
-    user_url = st.text_input("")
-    if user_url:
-        # Misalnya kita ambil teks dari URL (ini butuh BeautifulSoup atau API lain buat ambil teks)
+    elif st.session_state.tab == "URL" and user_url:
         st.markdown("### Teks dari URL yang Anda Masukkan:")
-        st.write(user_url)  # Menampilkan URL yang diinputkan (bisa diambil teksnya)
+        st.write(user_url)  # Menampilkan URL yang diinputkan
 
-elif st.session_state.tab == "DOCX":
-    uploaded_file = st.file_uploader("", type=["docx", "txt"])
-    if uploaded_file is not None:
-        # Untuk file DOCX, kamu bisa pake python-docx untuk membaca konten
+    elif st.session_state.tab == "DOCX" and uploaded_file:
+        # Membaca file DOCX dan menampilkan isinya
         from docx import Document
         doc = Document(uploaded_file)
         doc_text = ""
@@ -64,4 +68,5 @@ elif st.session_state.tab == "DOCX":
             doc_text += para.text + "\n"
         st.markdown("### Teks dari file DOCX yang Anda Upload:")
         st.write(doc_text)  # Menampilkan teks dari file DOCX
+
 
