@@ -7,9 +7,9 @@ st.markdown('<h1 style="color:black; font-size: 100px; text-align: center; margi
 st.markdown(
     """
     <head>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     </head>
-    <h4 style='text-align: center; color: black; font-family: "Roboto", sans-serif;'>
+    <h4 style='text-align: center; color: black; margin-top: 0; font-family: "Roboto", sans-serif; font-weight: 300;'>
         Not sure what to believe? Drop it here and let's check the facts and verify it here!
     </h4>
     """,
