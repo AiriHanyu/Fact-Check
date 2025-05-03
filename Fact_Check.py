@@ -18,13 +18,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-import streamlit as st
-
-# Inisialisasi session_state
 if "tab" not in st.session_state:
     st.session_state.tab = "TEXT"
 
-# Centered layout
 col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
 
 with col2:
@@ -37,8 +33,6 @@ with col4:
     if st.button("DOCX", use_container_width=True):
         st.session_state.tab = "DOCX"
 
-# Input box sesuai pilihan
-st.markdown("---")
 if st.session_state.tab == "TEXT":
     st.text_area("Masukkan teks di sini:", height=300)
 elif st.session_state.tab == "URL":
