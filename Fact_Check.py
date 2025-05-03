@@ -81,7 +81,7 @@ if st.session_state.tab:
                                 background-color: #ffffff; color: black;
                                 max-width: 100%; overflow-wrap: break-word;
                                 word-wrap: break-word;">
-                        {doc_text.replace('\n', '<br>')}
+                        {doc_text}
                     </div>
                 """, unsafe_allow_html=True)
     
