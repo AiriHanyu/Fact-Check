@@ -91,6 +91,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
+col1, col2, col3, col4, col5 = st.columns([1, 1, 3, 1, 1])
 with col3:
     check = st.button("Fact Check")
