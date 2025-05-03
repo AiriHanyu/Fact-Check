@@ -25,14 +25,7 @@ st.markdown(
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-import streamlit as st
-from docx import Document
-
-# Menyimpan tab yang dipilih
-if "tab" not in st.session_state:
-    st.session_state.tab = "TEXT"  # Default ke TEXT
-
-# Membuat tombol untuk memilih jenis input
+# Tombol untuk memilih jenis input
 col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
 
 with col2:
@@ -53,9 +46,9 @@ elif st.session_state.tab == "URL":
 elif st.session_state.tab == "DOCX":
     uploaded_file = st.file_uploader("Upload file .docx atau .txt kamu di sini:", type=["docx", "txt"])
 
-# Menampilkan tombol kirim setelah input
-col1, col2, col3 = st.columns([1, 2, 1, 2, 1])  # Tombol kirim di kolom tengah
-with col3:
+# Tombol Kirim muncul setelah input, dan hasilnya tampil setelah tombol kirim di klik
+col1, col2, col3 = st.columns([1, 2, 1])  # Tombol kirim di kolom tengah
+with col2:
     if st.button("Kirim"):
         if st.session_state.tab == "TEXT" and user_text:
             st.markdown("### Teks yang Anda Masukkan:")
@@ -67,6 +60,7 @@ with col3:
 
         elif st.session_state.tab == "DOCX" and uploaded_file:
             # Membaca file DOCX dan menampilkan isinya
+            from docx import Document
             doc = Document(uploaded_file)
             doc_text = ""
             for para in doc.paragraphs:
