@@ -18,7 +18,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("---")
+st.markdown(
+    "<hr style='border: 1.5px solid black; margin: 20px 0;'>",
+    unsafe_allow_html=True
+)
 
 if "tab" not in st.session_state:
     st.session_state.tab = "TEXT"
