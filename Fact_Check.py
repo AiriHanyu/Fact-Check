@@ -23,7 +23,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<br><br>", unsafe_allow_html=True)
 
 if "tab" not in st.session_state:
     st.session_state.tab = "TEXT"
