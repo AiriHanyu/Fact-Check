@@ -58,10 +58,13 @@ if view:
         if st.session_state.tab == "TEXT" and user_text:
             st.markdown("### Teks yang Anda Masukkan:")
             st.markdown(f"""
-                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9">
+                <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
+                            background-color: #f9f9f9; max-width: 100%; overflow-wrap: break-word;
+                            word-wrap: break-word; white-space: pre-wrap;">
                     {user_text}
                 </div>
             """, unsafe_allow_html=True)
+
 
         elif st.session_state.tab == "URL" and user_url:
             st.markdown("### Teks dari URL yang Anda Masukkan:")
