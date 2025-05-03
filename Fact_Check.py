@@ -18,14 +18,18 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-col1, col2, col3 = st.columns(3)
-
+col1, col2, col3 = st.columns([1, 1, 1])
+if "active_tab" not in st.session_state:
+    st.session_state.active_tab = "TEXT"
 with col1:
-    text_clicked = st.button("TEXT")
+    if st.button("TEXT"):
+        st.session_state.active_tab = "TEXT"
 with col2:
-    url_clicked = st.button("URL")
+    if st.button("URL"):
+        st.session_state.active_tab = "URL"
 with col3:
-    doc_clicked = st.button("DOC")
+    if st.button("DOC"):
+        st.session_state.active_tab = "DOC"
 
 if option == "TEXT":
     st.text_area("Masukkan teks di sini:", height=300) 
