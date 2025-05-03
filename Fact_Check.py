@@ -86,13 +86,11 @@ if st.session_state.tab:
                     </div>
                 """, unsafe_allow_html=True)
 
-            col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
-            with col3:
-                check = st.button("Fact Check")
-    
-
-
 st.markdown(
     "<hr style='border: 1.5px solid black; margin: 20px 0;'>",
     unsafe_allow_html=True
 )
+
+            col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
+            with col3:
+                check = st.button("Fact Check")
