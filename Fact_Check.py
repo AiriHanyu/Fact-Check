@@ -59,20 +59,13 @@ st.markdown("<h3 style='text-align: center; color: black;'>Pilih jenis input yan
 
 option = st.radio("", ["TEXT", "URL", "DOCX"], horizontal=True)
 
-col1, col2, col3 = st.columns(3)
-
+# Tampilkan input sesuai pilihan
 if option == "TEXT":
-    with col1:
-        user_text = st.text_area("Masukkan teks di sini:")
+    st.text_area("Masukkan teks di sini:", height=300)  # Menampilkan input untuk teks
 elif option == "URL":
-    with col2:
-        user_url = st.text_input("Tempelkan link berita di sini:")
-        if user_url:
-            article_text = get_text_from_url(user_url)
-            st.text_area("Teks dari artikel:", article_text, height=200)
+    st.text_input("Tempelkan link berita di sini:")  # Menampilkan input untuk URL
 elif option == "DOCX":
-    with col3:
-        uploaded_file = st.file_uploader("Upload file .docx kamu di sini:", type=["docx"])
+    uploaded_file = st.file_uploader("Upload file .docx kamu di sini:", type=["docx"])  # Untuk upload file .docx
 
 # Tombol untuk cek fakta
 if st.button("Cek Fakta"):
