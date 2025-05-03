@@ -1,2 +1,3 @@
-streamlit
+qstreamlit
 beautifulsoup4
+python-docx
