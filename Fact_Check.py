@@ -39,14 +39,11 @@ with col4:
         st.session_state.tab = "DOCX"
 
 if st.session_state.tab == "TEXT":
-    st.markdown("<p style='text-align: center; color: black;'>Masukkan teks di sini:</p>", unsafe_allow_html=True)
     st.text_area("", height=300)
 
 elif st.session_state.tab == "URL":
-    st.markdown("<p style='text-align: center; color: black;'>Tempelkan link berita di sini:</p>", unsafe_allow_html=True)
     st.text_input("")
 
 elif st.session_state.tab == "DOCX":
-    st.markdown("<p style='text-align: center; color: black;'>Upload file .docx atau .txt kamu di sini:</p>", unsafe_allow_html=True)
     st.file_uploader("", type=["docx", "txt"])
 
