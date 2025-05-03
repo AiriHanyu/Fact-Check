@@ -68,6 +68,8 @@ if st.session_state.tab:
                 st.markdown("### Teks dari file DOC yang Anda Upload:")
                 st.write(doc_text)
 
+st.markdown("<br>", unsafe_allow_html=True)
+
 st.markdown(
     "<hr style='border: 1.5px solid black; margin: 20px 0;'>",
     unsafe_allow_html=True
