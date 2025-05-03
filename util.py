@@ -1,3 +1,4 @@
+import base64
 import streamlit as st
 
 def set_background_color(hex_color="#F0F0F0"):
