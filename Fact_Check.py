@@ -1,5 +1,5 @@
 import streamlit as st
-from util import set_background_color, get_text_from_url
+from util import set_background_color, get_text_from_url, read_uploaded_file
 
 set_background_color("#12B9C8")
 
@@ -75,19 +75,15 @@ if view:
             """, unsafe_allow_html=True)
             
         elif st.session_state.tab == "DOC" and uploaded_file:
-            doc = Document(uploaded_file)
-            doc_text = ""
-            for para in doc.paragraphs:
-                doc_text += para.text + "<br>"
+            doc_text = read_uploaded_file(uploaded_file)
             st.markdown(f"""
                 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
                             background-color: #ffffff; color: black;
                             max-width: 100%; overflow-wrap: break-word;
                             word-wrap: break-word;">
-                    {article_text}
+                    {doc_text.replace('\n', '<br>')}
                 </div>
             """, unsafe_allow_html=True)
-
     
 
 
