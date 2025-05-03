@@ -18,33 +18,30 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("""
-    <style>
-        .center-radio label {
-            display: inline-block;
-            margin: 0 15px;
-            color: black !important;  /* warna teks */
-            font-weight: normal;
-        }
-        .center-radio div[role="radiogroup"] {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
-""", unsafe_allow_html=True)
+import streamlit as st
 
-option = st.radio(
-    "", 
-    ["TEXT", "URL", "DOCX"],
-    horizontal=True,
-    key="input_option"
-)
+# Inisialisasi session_state
+if "tab" not in st.session_state:
+    st.session_state.tab = "TEXT"
 
-# Tampilkan input sesuai pilihan
-if option == "TEXT":
-    st.text_area("Masukkan teks di sini:", height=300)  # Menampilkan input untuk teks
-elif option == "URL":
-    st.text_input("Tempelkan link berita di sini:")  # Menampilkan input untuk URL
-elif option == "DOCX":
-    uploaded_file = st.file_uploader("Upload file .docx kamu di sini:", type=["docx"])  # Untuk upload file .docx
+# Centered layout
+col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
 
+with col2:
+    if st.button("TEXT", use_container_width=True):
+        st.session_state.tab = "TEXT"
+with col3:
+    if st.button("URL", use_container_width=True):
+        st.session_state.tab = "URL"
+with col4:
+    if st.button("DOCX", use_container_width=True):
+        st.session_state.tab = "DOCX"
+
+# Input box sesuai pilihan
+st.markdown("---")
+if st.session_state.tab == "TEXT":
+    st.text_area("Masukkan teks di sini:", height=300)
+elif st.session_state.tab == "URL":
+    st.text_input("Tempelkan link berita di sini:")
+elif st.session_state.tab == "DOCX":
+    st.file_uploader("Upload file .docx, .txt, atau .pdf kamu di sini:", type=["docx", "txt", "pdf"])
