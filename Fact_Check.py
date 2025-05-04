@@ -2,7 +2,7 @@ import streamlit as st
 from util import set_background_color, get_text_from_url, read_uploaded_file
 import html
 
-set_background_color("#12B9C8")
+set_background_color("#808080")
 
 st.markdown('<h1 style="color:black; font-size: 100px; text-align: center; margin-bottom: 0;">FACT CHECK</h1>', unsafe_allow_html=True)
 st.markdown(
