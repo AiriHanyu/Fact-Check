@@ -10,7 +10,7 @@ st.markdown(
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     </head>
-    <h4 style='text-align: center; color: black; font-size: 12px; font-family: "Roboto", sans-serif; font-weight: 300;'>
+    <h4 style='text-align: center; color: black; font-family: "Roboto", sans-serif; font-weight: 300;'>
         Not sure what to believe? Let's check the facts and verify it here!
     </h4>
     """,
