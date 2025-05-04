@@ -59,7 +59,7 @@ if st.session_state.tab:
                     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
                                 background-color: #ffffff; color: black;
                                 max-width: 100%; overflow-wrap: break-word;
-                                word-wrap: break-word;">
+                                word-wrap: break-word; text-align: justify;">
                         {user_text}
                     </div>
                 """, unsafe_allow_html=True)
@@ -70,7 +70,7 @@ if st.session_state.tab:
                     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
                                 background-color: #ffffff; color: black;
                                 max-width: 100%; overflow-wrap: break-word;
-                                word-wrap: break-word;">
+                                word-wrap: break-word; text-align: justify;">
                         {article_text.replace('\n','')}
                     </div>
                 """, unsafe_allow_html=True)
@@ -81,7 +81,7 @@ if st.session_state.tab:
                     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
                                 background-color: #ffffff; color: black;
                                 max-width: 100%; overflow-wrap: break-word;
-                                word-wrap: break-word;">
+                                word-wrap: break-word; text-align: justify;">
                         {doc_text.replace('\n','')}
                     </div>
                 """, unsafe_allow_html=True)
