@@ -36,7 +36,7 @@ with col3:
     if st.button("URL", use_container_width=True):
         st.session_state.tab = "URL"
 with col4:
-    if st.button("DOCX", use_container_width=True):
+    if st.button("DOC", use_container_width=True):
         st.session_state.tab = "DOC"
 
 if st.session_state.tab:
