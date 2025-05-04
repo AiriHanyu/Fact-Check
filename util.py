@@ -39,3 +39,15 @@ def read_uploaded_file(file):
         return doc_text
     else:
         return "Format file tidak didukung."
+
+
+def preprocess(text):
+    # Lowercasing
+    
+    # Hapus angka dan karakter non-alphabet
+
+    # Tokenisasi (bisa pakai spacy atau nltk)
+
+    # Hapus stopwords
+    
+    return ' '.join("preprocessed")
