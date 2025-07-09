@@ -3,6 +3,9 @@ import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 from docx import Document
+import imageio_ffmpeg
+import moviepy.config as mpconf
+mpconf.change_settings({"FFMPEG_BINARY": imageio_ffmpeg.get_ffmpeg_exe()})
 from moviepy.editor import VideoFileClip
 import whisper
 import os
@@ -58,7 +61,7 @@ def transcribe_video_to_text(video_file):
     temp_video_path = "temp_video.mp4"
     temp_audio_path = "temp_audio.mp3"
     with open(temp_video_path, "wb") as f:
-        f.write(video_file.read())
+        f.write(video_file.getbuffer())
     clip = VideoFileClip(temp_video_path)
     clip.audio.write_audiofile(temp_audio_path)
     result = model.transcribe(temp_audio_path)
