@@ -27,7 +27,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 if "tab" not in st.session_state:
     st.session_state.tab = None
 
-col1, col2, col3, col4, col5, col5, col6, col7 = st.columns([1, 2, 2, 2, 2, 2, 1])
+col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 2, 2, 2, 2, 2, 1])
 
 with col2:
     if st.button("TEXT", use_container_width=True):
@@ -52,9 +52,17 @@ if st.session_state.tab:
         user_url = st.text_input("")
     elif st.session_state.tab == "DOC":
         uploaded_file = st.file_uploader("", type=["docx", "txt"])
+    elif st.session_state.tab == "MP3":
+        uploaded_file = st.file_uploader("Upload file MP3", type=["mp3"])
+        if uploaded_file is not None:
+            st.audio(uploaded_file)
+    elif st.session_state.tab == "MP4":
+        uploaded_file = st.file_uploader("Upload file MP4", type=["mp4"])
+        if uploaded_file is not None:
+            st.video(uploaded_file)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
+    col1, col2, col3, col4, col5, col6, col7 = st.columns([2, 2, 2, 1, 2, 2, 2])
     with col3:
         view = st.button("View")
 
