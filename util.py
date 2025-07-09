@@ -3,6 +3,9 @@ import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 from docx import Document
+from moviepy.editor import VideoFileClip
+import whisper
+import os
 
 def set_background_color(hex_color="#F0F0F0"):
     style = f"""
@@ -40,6 +43,24 @@ def read_uploaded_file(file):
     else:
         return "Format file tidak didukung."
 
+def extract_audio_from_video(video_file, output_path="temp_audio.mp3"):
+    """Ekstrak audio dari file MP4 dan simpan sebagai MP3"""
+    temp_video_path = "temp_video.mp4"
+    with open(temp_video_path, "wb") as f:
+        f.write(video_file.read())
+    clip = VideoFileClip(temp_video_path)
+    clip.audio.write_audiofile(output_path)
+    os.remove(temp_video_path)
+    return output_path
+
+model = whisper.load_model("base")
+def transcribe_audio(audio_file, temp_path="temp_audio.mp3"):
+    """Transkrip file audio ke teks"""
+    with open(temp_path, "wb") as f:
+        f.write(audio_file.read())
+    result = model.transcribe(temp_path)
+    os.remove(temp_path)
+    return result["text"]
 
 def preprocess(text):
     # Lowercasing
