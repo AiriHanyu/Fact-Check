@@ -3,6 +3,10 @@ import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 from docx import Document
+import re
+import string
+from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 
 
 def set_background_color(hex_color="#F0F0F0"):
@@ -41,13 +45,24 @@ def read_uploaded_file(file):
     else:
         return "Format file tidak didukung."
 
+stop_factory = StopWordRemoverFactory()
+stopwords = stop_factory.get_stop_words()
+stem_factory = StemmerFactory()
+stemmer = stem_factory.create_stemmer()
 def preprocess(text):
-    # Lowercasing
-    
-    # Hapus angka dan karakter non-alphabet
-
-    # Tokenisasi (bisa pakai spacy atau nltk)
-
-    # Hapus stopwords
-    
-    return ' '.join("preprocessed")
+    text = str(text).lower()  # lowercase
+    text = re.sub(r'<.*?>', ' ', text)  # hapus tag HTML
+    text = re.sub(r'https?://\S+|www\.\S+', ' ', text)  # hapus URL
+    text = re.sub(r'#\w+', ' ', text)  # hapus hashtag
+    text = re.sub(r'\d+', ' ', text)  # hapus angka
+    text = text.translate(str.maketrans('', '', string.punctuation))  # hapus tanda baca
+    text = re.sub(r'\s+', ' ', text)  # hilangkan spasi ganda
+    text = text.strip()  # hapus spasi awal/akhir
+    text = re.sub(r'@\w+', '', text)  # hapus mention (@username)
+    text = re.sub(r'[^\x00-\x7F]+', ' ', text) # hapus Emotikon
+    # Token, Stopword Removal, dan Stemming
+    tokens = text.split()
+    tokens = [word for word in tokens if word not in stopwords]
+    text = ' '.join(tokens)
+    text = stemmer.stem(text)
+    return text
