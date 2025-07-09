@@ -61,10 +61,9 @@ if st.session_state.tab:
         if uploaded_file is not None:
             st.video(uploaded_file)
 
-    st.markdown("<br>", unsafe_allow_html=True)
-    col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 1, 2, 2, 2, 1, 1])
-    with col4:
-        view = st.button("View")
+col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 2, 2, 2, 2, 2, 1])
+with col4:
+    view = st.button("View")
 
     if view:
         with st.container():
