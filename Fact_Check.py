@@ -1,5 +1,5 @@
 import streamlit as st
-from util import set_background_color, get_text_from_url, read_uploaded_file, transcribe_audio, transcribe_video_to_text
+from util import set_background_color, render_text_output, get_text_from_url, read_uploaded_file, transcribe_audio, transcribe_video_to_text
 import html
 
 set_background_color("#A9A9A9")
@@ -63,64 +63,34 @@ if st.session_state.tab:
 
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 2, 2, 2, 2, 2, 1])
+
+    can_view = False
+    if st.session_state.tab == "TEXT" and user_text:
+        can_view = True
+    elif st.session_state.tab == "URL" and user_url:
+        can_view = True
+    elif st.session_state.tab in ["DOC", "MP3", "MP4"] and uploaded_file is not None:
+        can_view = True
+
     with col4:
-        view = st.button("View")
+        view = st.button("View", disabled=not can_view)
 
     if view:
         with st.container():
-            if st.session_state.tab == "TEXT" and user_text:
-                st.markdown(f"""
-                    <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                                background-color: #ffffff; color: black;
-                                max-width: 100%; overflow-wrap: break-word;
-                                word-wrap: break-word; text-align: justify;">
-                        {user_text}
-                    </div>
-                """, unsafe_allow_html=True)
-    
-            elif st.session_state.tab == "URL" and user_url:
-                article_text = get_text_from_url(user_url)
-                st.markdown(f"""
-                    <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                                background-color: #ffffff; color: black;
-                                max-width: 100%; overflow-wrap: break-word;
-                                word-wrap: break-word; text-align: justify;">
-                        {article_text.replace('\n','')}
-                    </div>
-                """, unsafe_allow_html=True)
-                
-            elif st.session_state.tab == "DOC" and uploaded_file:
-                doc_text = read_uploaded_file(uploaded_file)
-                st.markdown(f"""
-                    <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                                background-color: #ffffff; color: black;
-                                max-width: 100%; overflow-wrap: break-word;
-                                word-wrap: break-word; text-align: justify;">
-                        {doc_text.replace('\n','')}
-                    </div>
-                """, unsafe_allow_html=True)
+            if st.session_state.tab == "TEXT":
+                render_text_output(user_text)
 
-            elif st.session_state.tab == "MP3" and uploaded_file:
-                doc_text = transcribe_audio(uploaded_file)
-                st.markdown(f"""
-                    <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                                background-color: #ffffff; color: black;
-                                max-width: 100%; overflow-wrap: break-word;
-                                word-wrap: break-word; text-align: justify;">
-                        {doc_text.replace('\n','')}
-                    </div>
-                """, unsafe_allow_html=True)
+            elif st.session_state.tab == "URL":
+                render_text_output(get_text_from_url(user_url))
 
-            elif st.session_state.tab == "MP4" and uploaded_file:
-                doc_text = transcribe_video_to_text(uploaded_file)
-                st.markdown(f"""
-                    <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
-                                background-color: #ffffff; color: black;
-                                max-width: 100%; overflow-wrap: break-word;
-                                word-wrap: break-word; text-align: justify;">
-                        {doc_text.replace('\n','')}
-                    </div>
-                """, unsafe_allow_html=True)
+            elif st.session_state.tab == "DOC":
+                render_text_output(read_uploaded_file(uploaded_file))
+
+            elif st.session_state.tab == "MP3":
+                render_text_output(transcribe_audio(uploaded_file))
+
+            elif st.session_state.tab == "MP4":
+                render_text_output(transcribe_video_to_text(uploaded_file))
             
             st.markdown("<br>", unsafe_allow_html=True)
 
