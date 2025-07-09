@@ -27,7 +27,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 if "tab" not in st.session_state:
     st.session_state.tab = None
 
-col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
+col1, col2, col3, col4, col5, col5, col6, col7 = st.columns([1, 2, 2, 2, 2, 2, 1])
 
 with col2:
     if st.button("TEXT", use_container_width=True):
@@ -38,6 +38,12 @@ with col3:
 with col4:
     if st.button("DOC", use_container_width=True):
         st.session_state.tab = "DOC"
+with col5:
+    if st.button("MP3", use_container_width=True):
+        st.session_state.tab = "MP3"
+with col6:
+    if st.button("MP4", use_container_width=True):
+        st.session_state.tab = "MP4"
 
 if st.session_state.tab:
     if st.session_state.tab == "TEXT":
