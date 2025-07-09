@@ -43,15 +43,21 @@ def read_uploaded_file(file):
     else:
         return "Format file tidak didukung."
 
-def extract_audio_from_video(video_file, output_path="temp_audio.mp3"):
-    """Ekstrak audio dari file MP4 dan simpan sebagai MP3"""
+def transcribe_video_to_text(video_file):
+    """Ekstrak audio dari video dan langsung transkrip jadi teks"""
     temp_video_path = "temp_video.mp4"
+    temp_audio_path = "temp_audio.mp3"
     with open(temp_video_path, "wb") as f:
         f.write(video_file.read())
     clip = VideoFileClip(temp_video_path)
-    clip.audio.write_audiofile(output_path)
-    os.remove(temp_video_path)
-    return output_path
+    clip.audio.write_audiofile(temp_audio_path)
+    result = model.transcribe(temp_audio_path)
+    try:
+        os.remove(temp_video_path)
+        os.remove(temp_audio_path)
+    except:
+        pass
+    return result["text"]
 
 model = whisper.load_model("base")
 def transcribe_audio(audio_file, temp_path="temp_audio.mp3"):
@@ -59,7 +65,10 @@ def transcribe_audio(audio_file, temp_path="temp_audio.mp3"):
     with open(temp_path, "wb") as f:
         f.write(audio_file.read())
     result = model.transcribe(temp_path)
-    os.remove(temp_path)
+    try:
+        os.remove(temp_path)
+    except FileNotFoundError:
+        pass
     return result["text"]
 
 def preprocess(text):
