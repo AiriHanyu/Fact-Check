@@ -17,6 +17,16 @@ def set_background_color(hex_color="#F0F0F0"):
     """
     st.markdown(style, unsafe_allow_html=True)
 
+def render_text_output(text):
+    st.markdown(f"""
+        <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
+                    background-color: #ffffff; color: black;
+                    max-width: 100%; overflow-wrap: break-word;
+                    word-wrap: break-word; text-align: justify;">
+            {text.replace('\n','<br>')}
+        </div>
+    """, unsafe_allow_html=True)
+
 def get_text_from_url(url):
     try:
         response = requests.get(url)
