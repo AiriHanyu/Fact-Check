@@ -2,5 +2,5 @@ streamlit
 beautifulsoup4
 python-docx
 openai-whisper
-moviepy=1.0.3
+moviepy
 imageio-ffmpeg
