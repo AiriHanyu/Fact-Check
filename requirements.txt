@@ -1,3 +1,6 @@
 streamlit
 beautifulsoup4
 python-docx
+openai-whisper
+moviepy
+imageio-ffmpeg
