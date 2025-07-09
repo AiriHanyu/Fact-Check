@@ -1,5 +1,5 @@
 import streamlit as st
-from util import set_background_color, get_text_from_url, read_uploaded_file
+from util import set_background_color, get_text_from_url, read_uploaded_file, transcribe_audio, transcribe_video_to_text
 import html
 
 set_background_color("#A9A9A9")
@@ -101,7 +101,7 @@ if st.session_state.tab:
                 """, unsafe_allow_html=True)
 
             elif st.session_state.tab == "MP3" and uploaded_file:
-                doc_text = read_uploaded_file(uploaded_file)
+                doc_text = transcribe_audio(uploaded_file)
                 st.markdown(f"""
                     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
                                 background-color: #ffffff; color: black;
@@ -111,8 +111,8 @@ if st.session_state.tab:
                     </div>
                 """, unsafe_allow_html=True)
 
-            elif st.session_state.tab == "DOC" and uploaded_file:
-                doc_text = read_uploaded_file(uploaded_file)
+            elif st.session_state.tab == "MP4" and uploaded_file:
+                doc_text = transcribe_video_to_text(uploaded_file)
                 st.markdown(f"""
                     <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;
                                 background-color: #ffffff; color: black;
