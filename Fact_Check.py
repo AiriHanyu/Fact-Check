@@ -88,7 +88,7 @@ if st.session_state.tab:
                 
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
-                proba = classify(user_text)[0]  # hasil probabilitas array
+                proba = classify(article_text)[0]  # hasil probabilitas array
                 st.markdown('<h1 style="color:black; font-size: 48px; text-align: center; margin-bottom: 0;">HASIL PREDIKSI</h1>', unsafe_allow_html=True)
                 html_blocks = []  # reset blok setiap input baru
                 for i in range(len(labels)):
@@ -104,7 +104,7 @@ if st.session_state.tab:
                 
             elif st.session_state.tab == "DOC" and uploaded_file:
                 doc_text = read_uploaded_file(uploaded_file)
-                proba = classify(user_text)[0]  # hasil probabilitas array
+                proba = classify(doc_text)[0]  # hasil probabilitas array
                 st.markdown('<h1 style="color:black; font-size: 48px; text-align: center; margin-bottom: 0;">HASIL PREDIKSI</h1>', unsafe_allow_html=True)
                 html_blocks = []  # reset blok setiap input baru
                 for i in range(len(labels)):
