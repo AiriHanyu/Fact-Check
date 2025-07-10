@@ -69,32 +69,32 @@ if st.session_state.tab:
         with st.container():
             if st.session_state.tab == "TEXT" and user_text:
                 label, confidence = classify(user_text)
-                st.write("## {}".format(label))
-                st.write("### score: {}".format(label))
+                st.write(f"## Label: {label}")
+                st.write(f"### Confidence: {confidence:.2f}%")
     
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
                 label, confidence = classify(article_text)
-                st.write("## {}".format(label))
-                st.write("### score: {}".format(label))
+                st.write(f"## Label: {label}")
+                st.write(f"### Confidence: {confidence:.2f}%")
                 
             elif st.session_state.tab == "DOC" and uploaded_file:
                 doc_text = read_uploaded_file(uploaded_file)
                 label, confidence = classify(doc_text)
-                st.write("## {}".format(label))
-                st.write("### score: {}".format(label))
+                st.write(f"## Label: {label}")
+                st.write(f"### Confidence: {confidence:.2f}%")
 
             elif st.session_state.tab == "MP3" and uploaded_file:
                 mp3_text = transcribe_audio(uploaded_file)
                 label, confidence = classify(mp3_text)
-                st.write("## {}".format(label))
-                st.write("### score: {}".format(label))
+                st.write(f"## Label: {label}")
+                st.write(f"### Confidence: {confidence:.2f}%")
 
             elif st.session_state.tab == "MP4" and uploaded_file:
                 mp4_text = transcribe_video_to_text(uploaded_file)
                 label, confidence = classify(mp4_text)
-                st.write("## {}".format(label))
-                st.write("### score: {}".format(label))
+                st.write(f"## Label: {label}")
+                st.write(f"### Confidence: {confidence:.2f}%")
             
             st.markdown("<br>", unsafe_allow_html=True)
 
