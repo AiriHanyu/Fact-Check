@@ -73,27 +73,23 @@ if st.session_state.tab:
     
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
-                label, confidence = classify(article_text)
-                st.write(f"## Label: {label}")
-                st.write(f"### Confidence: {confidence:.2f}%")
+                proba = classify(user_url)
+                st.write(f"## Label: {proba}")
                 
             elif st.session_state.tab == "DOC" and uploaded_file:
                 doc_text = read_uploaded_file(uploaded_file)
-                label, confidence = classify(doc_text)
-                st.write(f"## Label: {label}")
-                st.write(f"### Confidence: {confidence:.2f}%")
+                proba = classify(doc_text)
+                st.write(f"## Label: {proba}")
 
             elif st.session_state.tab == "MP3" and uploaded_file:
                 mp3_text = transcribe_audio(uploaded_file)
-                label, confidence = classify(mp3_text)
-                st.write(f"## Label: {label}")
-                st.write(f"### Confidence: {confidence:.2f}%")
+                proba = classify(mp3_text)
+                st.write(f"## Label: {proba}")
 
             elif st.session_state.tab == "MP4" and uploaded_file:
                 mp4_text = transcribe_video_to_text(uploaded_file)
-                label, confidence = classify(mp4_text)
-                st.write(f"## Label: {label}")
-                st.write(f"### Confidence: {confidence:.2f}%")
+                proba = classify(mp4_text)
+                st.write(f"## Label: {proba}")
             
             st.markdown("<br>", unsafe_allow_html=True)
 
