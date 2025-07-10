@@ -71,15 +71,14 @@ if st.session_state.tab:
     if view:
         with st.container():
             if st.session_state.tab == "TEXT" and user_text:
-                proba = classify(user_text)[0]  
+                proba = classify(user_text)[0]
+                labels = ["HOAKS", "VALID"]
+                colors = ["#FF4B4B", "#1AB13D"]
                 st.markdown('<h1 style="color:black; font-size: 48px; text-align: center; margin-bottom: 0;">HASIL PREDIKSI</h1>', unsafe_allow_html=True)
-                
                 html_blocks = [] 
-            
                 for i in range(len(labels)):
-                    percent = proba[i] * 100 
+                    percent = proba[i] * 100
                     html_blocks.append(circle_progress(labels[i], percent, colors[i]))
-                
                 st.markdown(
                     f"""
                     <div style="display: flex; justify-content: center;">
@@ -87,6 +86,7 @@ if st.session_state.tab:
                     </div>
                     """, unsafe_allow_html=True
                 )
+                
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
                 proba = classify(user_url)
