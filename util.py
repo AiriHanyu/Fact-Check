@@ -76,8 +76,5 @@ with open("labels.txt", "r") as f:
 def classify(text):
     clean_text = preprocess(text)
     weight = tfidf.transform([clean_text])
-    proba = model.predict_proba(weight)[0]
-    label = model.predict(weight)[0]
-    confidence = proba[label] * 100
-    label_name = class_names[label]
-    return label_name, confidence
+    proba = model.predict_proba(weight)
+    return proba
