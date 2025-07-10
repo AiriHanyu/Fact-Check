@@ -4,6 +4,9 @@ import html
 
 set_background_color("#A9A9A9")
 
+labels = ["HOAKS", "VALID"]
+colors = ["red", "green"]
+
 st.markdown('<h1 style="color:black; font-size: 100px; text-align: center; margin-bottom: 0;">FACT CHECK</h1>', unsafe_allow_html=True)
 st.markdown(
     """
@@ -69,7 +72,11 @@ if st.session_state.tab:
         with st.container():
             if st.session_state.tab == "TEXT" and user_text:
                 proba = classify(user_text)
-                st.write(f"## Label: {proba}")
+                proba = classify(user_text)[0]  # [0.123, 0.877] misal
+                st.markdown("## 🔍 Hasil Prediksi Probabilitas:")
+                for i in range(len(labels)):
+                    st.markdown(f"<h4 style='color:{colors[i]};'>{labels[i]}: {proba[i]*100:.2f}%</h4>", unsafe_allow_html=True)
+                    st.progress(proba[i])
     
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
