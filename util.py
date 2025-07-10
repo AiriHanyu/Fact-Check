@@ -70,9 +70,8 @@ def preprocess(text):
 
 model = joblib.load('model.pkl')
 tfidf = joblib.load('tfidf.pkl')
-with open('labels.txt', 'r') as f:
-    class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
-    f.close()
+with open("labels.txt", "r") as f:
+    class_names = [line.strip().split('=')[1].strip() for line in f]
 
 def classify(text):
     clean_text = preprocess(text)
