@@ -49,6 +49,8 @@ with col6:
     if st.button("MP4", use_container_width=True):
         st.session_state.tab = "MP4"
 
+view = False
+
 if st.session_state.tab:
     if st.session_state.tab == "TEXT":
         user_text = st.text_area("", height=300)
