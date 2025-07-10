@@ -1,2 +1,2 @@
-0 VALID
-1 HOAKS
+0 = VALID
+1 = HOAKS
