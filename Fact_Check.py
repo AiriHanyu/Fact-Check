@@ -75,7 +75,7 @@ if st.session_state.tab:
                 proba = classify(user_text)[0]  
                 st.markdown('<h1 style="color:black; font-size: 48px; text-align: center; margin-bottom: 0;">HASIL PREDIKSI</h1>', unsafe_allow_html=True)
                 for i in range(len(labels)):
-                    st.markdown(f"<h4 style='color:{colors[i]}; font-size: 24px; text-align: center;'>{labels[i]}: {proba[i]*100:.2f}%</h4>", unsafe_allow_html=True)
+                    st.markdown(f"<h4 style='color:{colors[i]};'>{labels[i]}: {proba[i]*100:.2f}%</h4>", unsafe_allow_html=True)
     
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
