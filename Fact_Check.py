@@ -7,6 +7,7 @@ set_background_color("#A9A9A9")
 labels = ["HOAKS", "VALID"]
 colors = ["#FF4B4B", "#1AB13D"] 
 
+
 st.markdown('<h1 style="color:black; font-size: 100px; text-align: center; margin-bottom: 0;">FACT CHECK</h1>', unsafe_allow_html=True)
 st.markdown(
     """
@@ -76,7 +77,7 @@ if st.session_state.tab:
                 for i in range(len(labels)):
                     percent = proba[i] * 100
                     html_blocks.append(circle_progress(labels[i], percent, colors[i]))
-            
+                html_blocks = []
                 st.markdown(
                     f"""
                     <div style="display: flex; justify-content: center;">
