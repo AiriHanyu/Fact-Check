@@ -57,13 +57,9 @@ if st.session_state.tab:
     elif st.session_state.tab == "DOC":
         uploaded_file = st.file_uploader("", type=["docx", "txt"])
     elif st.session_state.tab == "MP3":
-        uploaded_file = st.file_uploader("Upload file MP3", type=["mp3"])
-        if uploaded_file is not None:
-            st.audio(uploaded_file)
+        st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembanganq</h1>', unsafe_allow_html=True)
     elif st.session_state.tab == "MP4":
-        uploaded_file = st.file_uploader("Upload file MP4", type=["mp4"])
-        if uploaded_file is not None:
-            st.video(uploaded_file)
+        st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembanganq</h1>', unsafe_allow_html=True)
 
     col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
     with col3:
