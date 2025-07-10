@@ -69,7 +69,7 @@ if st.session_state.tab:
         with st.container():
             if st.session_state.tab == "TEXT" and user_text:
                 proba = classify(user_text)
-                print(proba)
+                st.write(f"## Label: {proba}")
     
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
