@@ -6,7 +6,6 @@ set_background_color("#A9A9A9")
 
 labels = ["HOAKS", "VALID"]
 colors = ["#FF4B4B", "#1AB13D"] 
-html_blocks = []
 
 st.markdown('<h1 style="color:black; font-size: 100px; text-align: center; margin-bottom: 0;">FACT CHECK</h1>', unsafe_allow_html=True)
 st.markdown(
