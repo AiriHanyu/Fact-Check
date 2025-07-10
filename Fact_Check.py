@@ -74,6 +74,7 @@ if st.session_state.tab:
             if st.session_state.tab == "TEXT" and user_text:
                 proba = classify(user_text)[0]  # hasil probabilitas array
                 st.markdown('<h1 style="color:black; font-size: 48px; text-align: center; margin-bottom: 0;">HASIL PREDIKSI</h1>', unsafe_allow_html=True)
+                html_blocks = []  # reset blok setiap input baru
                 for i in range(len(labels)):
                     percent = proba[i] * 100
                     html_blocks.append(circle_progress(labels[i], percent, colors[i]))
