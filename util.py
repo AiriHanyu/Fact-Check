@@ -7,6 +7,7 @@ import re
 import string
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+import joblib
 
 
 def set_background_color(hex_color="#F0F0F0"):
@@ -67,3 +68,13 @@ def preprocess(text):
     text = stemmer.stem(text)
     return text
 
+model = joblib.load('model.pkl')
+tfidf = joblib.load('tfidf.pkl')
+
+def classify(text):
+    clean_text = preprocess(text)
+    tfidf = tfidf.transform([clean_text])
+    proba = model.predict_proba(tfidf)[0]
+    label = model.predict(tfidf)[0]
+    confidence = proba[label] * 100
+    return label, confidence
