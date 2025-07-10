@@ -73,8 +73,8 @@ tfidf = joblib.load('tfidf.pkl')
 
 def classify(text):
     clean_text = preprocess(text)
-    tfidf = tfidf.transform([clean_text])
-    proba = model.predict_proba(tfidf)[0]
-    label = model.predict(tfidf)[0]
+    weight = tfidf.transform([clean_text])
+    proba = model.predict_proba(weight)[0]
+    label = model.predict(weight)[0]
     confidence = proba[label] * 100
     return label, confidence
