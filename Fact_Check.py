@@ -1,11 +1,12 @@
 import streamlit as st
-from util import set_background_color, get_text_from_url, read_uploaded_file, classify
+from util import set_background_color, get_text_from_url, read_uploaded_file, classify, circle_progress
 import html
 
 set_background_color("#A9A9A9")
 
 labels = ["HOAKS", "VALID"]
-colors = ["red", "green"]
+colors = ["#FF4B4B", "#1AB13D"] 
+html_blocks = []
 
 st.markdown('<h1 style="color:black; font-size: 100px; text-align: center; margin-bottom: 0;">FACT CHECK</h1>', unsafe_allow_html=True)
 st.markdown(
@@ -75,8 +76,15 @@ if st.session_state.tab:
                 proba = classify(user_text)[0]  
                 st.markdown('<h1 style="color:black; font-size: 48px; text-align: center; margin-bottom: 0;">HASIL PREDIKSI</h1>', unsafe_allow_html=True)
                 for i in range(len(labels)):
-                    st.markdown(f"<h4 style='color:{colors[i]}; text-align: center;'>{labels[i]}: {proba[i]*100:.2f}%</h4>", unsafe_allow_html=True)
-                    st.progress(proba[i])
+                    percent = proba[i] * 100
+                    html_blocks.append(circle_progress(labels[i], percent, colors[i]))
+                st.markdown(
+                    f"""
+                    <div style="display: flex; justify-content: center;">
+                        {''.join(html_blocks)}
+                    </div>
+                    """, unsafe_allow_html=True
+                )
             
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
