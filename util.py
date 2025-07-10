@@ -78,3 +78,15 @@ def classify(text):
     weight = tfidf.transform([clean_text])
     proba = model.predict_proba(weight)
     return proba
+
+def circle_progress(label, percent, color):
+    return f"""
+    <div style="display: flex; flex-direction: column; align-items: center; margin: 10px;">
+        <div style="width: 120px; height: 120px; border-radius: 50%; border: 10px solid {color}; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; color: {color};">
+            {percent:.2f}%
+        </div>
+        <div style="margin-top: 10px; font-size: 18px; color: {color}; font-weight: bold;">
+            {label}
+        </div>
+    </div>
+    """
