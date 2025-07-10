@@ -70,6 +70,8 @@ def preprocess(text):
 
 model = joblib.load('model.pkl')
 tfidf = joblib.load('tfidf.pkl')
+with open('labels.txt', 'r') as f:
+    class_names = [line.strip().split('=')[1].strip() for line in f.readlines()]
 
 def classify(text):
     clean_text = preprocess(text)
@@ -77,4 +79,5 @@ def classify(text):
     proba = model.predict_proba(weight)[0]
     label = model.predict(weight)[0]
     confidence = proba[label] * 100
-    return label, confidence
+    label_name = class_names[label]
+    return label_name, confidence
