@@ -80,6 +80,7 @@ if st.session_state.tab:
                 st.markdown(
                     f"""
                     <div style="display: flex; justify-content: center;">
+                        {''.join(html_blocks)}
                     </div>
                     """, unsafe_allow_html=True
                 )
