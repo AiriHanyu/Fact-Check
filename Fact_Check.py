@@ -72,10 +72,18 @@ if st.session_state.tab:
         with st.container():
             if st.session_state.tab == "TEXT" and user_text:
                 proba = classify(user_text)
-                proba = classify(user_text)[0]  # [0.123, 0.877] misal
-                st.markdown("## 🔍 Hasil Prediksi Probabilitas:")
+                proba = classify(user_text)[0]  
+                st.markdown("## 🔍 <span style='color:#A9A9A9;'>Hasil Prediksi Probabilitas:</span>", unsafe_allow_html=True)
+
                 for i in range(len(labels)):
-                    st.markdown(f"<h4 style='color:{colors[i]};'>{labels[i]}: {proba[i]*100:.2f}%</h4>", unsafe_allow_html=True)
+                    st.markdown(
+                        f"""
+                        <div style='margin-bottom: 5px;'>
+                            <span style='font-weight: bold; font-size: 22px; color:#A9A9A9;'>{labels[i]}:</span>
+                            <span style='font-weight: bold; font-size: 22px; color:{colors[i]};'> {proba[i]*100:.2f}%</span>
+                        </div>
+                        """, unsafe_allow_html=True
+                    )
                     st.progress(proba[i])
     
             elif st.session_state.tab == "URL" and user_url:
