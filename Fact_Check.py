@@ -68,9 +68,8 @@ if st.session_state.tab:
     if view:
         with st.container():
             if st.session_state.tab == "TEXT" and user_text:
-                label, confidence = classify(user_text)
-                st.write(f"## Label: {label}")
-                st.write(f"### Confidence: {confidence:.2f}%")
+                proba = classify(user_text)
+                print(proba)
     
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
