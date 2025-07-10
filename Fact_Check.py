@@ -88,23 +88,41 @@ if st.session_state.tab:
                 
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
-                proba = classify(user_url)
-                st.write(f"## Label: {proba}")
+                proba = classify(user_text)[0]  # hasil probabilitas array
+                st.markdown('<h1 style="color:black; font-size: 48px; text-align: center; margin-bottom: 0;">HASIL PREDIKSI</h1>', unsafe_allow_html=True)
+                html_blocks = []  # reset blok setiap input baru
+                for i in range(len(labels)):
+                    percent = proba[i] * 100
+                    html_blocks.append(circle_progress(labels[i], percent, colors[i]))
+                st.markdown(
+                    f"""
+                    <div style="display: flex; justify-content: center;">
+                        {' '.join(html_blocks)}
+                    </div>
+                    """, unsafe_allow_html=True
+                )
                 
             elif st.session_state.tab == "DOC" and uploaded_file:
                 doc_text = read_uploaded_file(uploaded_file)
-                proba = classify(doc_text)
-                st.write(f"## Label: {proba}")
+                proba = classify(user_text)[0]  # hasil probabilitas array
+                st.markdown('<h1 style="color:black; font-size: 48px; text-align: center; margin-bottom: 0;">HASIL PREDIKSI</h1>', unsafe_allow_html=True)
+                html_blocks = []  # reset blok setiap input baru
+                for i in range(len(labels)):
+                    percent = proba[i] * 100
+                    html_blocks.append(circle_progress(labels[i], percent, colors[i]))
+                st.markdown(
+                    f"""
+                    <div style="display: flex; justify-content: center;">
+                        {' '.join(html_blocks)}
+                    </div>
+                    """, unsafe_allow_html=True
+                )
 
             elif st.session_state.tab == "MP3" and uploaded_file:
-                mp3_text = transcribe_audio(uploaded_file)
-                proba = classify(mp3_text)
-                st.write(f"## Label: {proba}")
-
+                st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembanganq</h1>', unsafe_allow_html=True)
+            
             elif st.session_state.tab == "MP4" and uploaded_file:
-                mp4_text = transcribe_video_to_text(uploaded_file)
-                proba = classify(mp4_text)
-                st.write(f"## Label: {proba}")
+                st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembanganq</h1>', unsafe_allow_html=True)
             
             st.markdown("<br>", unsafe_allow_html=True)
 
