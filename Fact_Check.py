@@ -57,9 +57,9 @@ if st.session_state.tab:
     elif st.session_state.tab == "DOC":
         uploaded_file = st.file_uploader("", type=["docx", "txt"])
     elif st.session_state.tab == "MP3":
-        st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembanganq</h1>', unsafe_allow_html=True)
+        st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembangan</h1>', unsafe_allow_html=True)
     elif st.session_state.tab == "MP4":
-        st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembanganq</h1>', unsafe_allow_html=True)
+        st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembangan</h1>', unsafe_allow_html=True)
 
     col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
     with col3:
@@ -113,12 +113,6 @@ if st.session_state.tab:
                     </div>
                     """, unsafe_allow_html=True
                 )
-
-            elif st.session_state.tab == "MP3" and uploaded_file:
-                st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembanganq</h1>', unsafe_allow_html=True)
-            
-            elif st.session_state.tab == "MP4" and uploaded_file:
-                st.markdown('<h1 style="color:black; font-size: 24px; text-align: center; margin-bottom: 0;">Masih dalam tahap pengembanganq</h1>', unsafe_allow_html=True)
             
             st.markdown("<br>", unsafe_allow_html=True)
 
