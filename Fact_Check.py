@@ -78,12 +78,12 @@ if st.session_state.tab:
                     percent = proba[i] * 100
                     html_blocks.append(circle_progress(labels[i], percent, colors[i]))
                 st.markdown(
-                    f"""
-                    <div style="display: flex; justify-content: center;">
-                        {' '.join(html_blocks)}
-                    </div>
-                    """, unsafe_allow_html=True
+                f"""<div style="display: flex; justify-content: center;">
+                {''.join(html_blocks)}
+                </div>""",
+                unsafe_allow_html=True
                 )
+
                 
             elif st.session_state.tab == "URL" and user_url:
                 article_text = get_text_from_url(user_url)
@@ -125,3 +125,4 @@ if st.session_state.tab:
             )
 
             st.markdown("<br>", unsafe_allow_html=True)
+
