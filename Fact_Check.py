@@ -7,7 +7,6 @@ set_background_color("#A9A9A9")
 labels = ["HOAKS", "VALID"]
 colors = ["#FF4B4B", "#1AB13D"]
 
-# ---- Header (tanpa indent) ----
 st.markdown(
     """<h1 style="color:black; font-size: 100px; text-align: center; margin-bottom: 0;">FACT CHECK</h1>""",
     unsafe_allow_html=True
@@ -26,11 +25,9 @@ st.markdown(
 st.markdown("""<hr style='border: 1.5px solid black; margin: 20px 0;'>""", unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)
 
-# ---- State ----
 if "tab" not in st.session_state:
     st.session_state.tab = None
 
-# ---- Tabs ----
 col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 2, 2, 2, 2, 2, 1])
 with col2:
     if st.button("TEXT", use_container_width=True):
@@ -48,7 +45,6 @@ with col6:
     if st.button("MP4", use_container_width=True):
         st.session_state.tab = "MP4"
 
-# ---- Helper render ----
 def render_prediction(proba):
     st.markdown("""<h1 style="color:black; font-size: 48px; text-align: center; margin-bottom: 0;">HASIL PREDIKSI</h1>""",
                 unsafe_allow_html=True)
@@ -56,14 +52,13 @@ def render_prediction(proba):
     for i in range(len(labels)):
         percent = proba[i] * 100
         html_blocks.append(circle_progress(labels[i], percent, colors[i]))
-    # TANPA INDENT / gunakan dedent; tidak ada spasi di awal baris
+    
     st.markdown(dedent(f"""
     <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
     {''.join(html_blocks)}
     </div>
     """), unsafe_allow_html=True)
 
-# ---- View area per tab ----
 view = False
 if st.session_state.tab:
     if st.session_state.tab == "TEXT":
@@ -103,3 +98,4 @@ if st.session_state.tab:
             st.markdown("<br>", unsafe_allow_html=True)
             st.markdown("<hr style='border: 1.5px solid black; margin: 20px 0;'>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
+
