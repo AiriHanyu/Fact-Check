@@ -1,19 +1,28 @@
 import streamlit as st
-from util import set_background_color
+import pandas as pd
+from datetime import datetime
 
-set_background_color("#12B9C8")
+st.title("Riwayat Verifikasi")
 
-st.markdown('<h1 style="color:black; font-size: 100px; text-align: center;">ABOUT US</h1>', unsafe_allow_html=True)
+if "results" not in st.session_state:
+    st.session_state.results = []
 
-st.markdown("""
-    <div style="color: black;">
-        <br><br>
-        <h3>AIMAR ANSHARI</h3>
-         <p style="color:black;">Email: aiimaransharii@gmail.com</p>
-        <a href="https://instagram.com/aynshz_ryuxzy" style="color:black;">Instagram</a>
-         <hr style="border-color:black;">
-        <h3>MUTHMAINNAH NUR IZZAH</h3>
-         <p style="color:black;">Email: innzzh@gmail.com</p>
-        <a href="https://instagram.com/innzzh" style="color:black;">Instagram</a>
-    </div>
-""", unsafe_allow_html=True)
+if "last_result" in st.session_state:
+    data = st.session_state.last_result
+    proba = data["proba"]
+
+    label = "HOAKS" if proba[0][0] > 0.5 else "VALID"
+    st.session_state.results.append({
+        "Waktu": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "Narasi Berita": data["text"],
+        "Prediksi": label,
+        "Silahkan Menunggu Konfirmasi Selanjutnya": ""
+    })
+
+    del st.session_state.last_result
+
+if len(st.session_state.results) == 0:
+    st.info("Belum ada data verifikasi.")
+else:
+    df = pd.DataFrame(st.session_state.results)
+    st.table(df)
