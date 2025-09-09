@@ -9,18 +9,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Contoh data dummy
-data = {
-    "Waktu": ["09/09/2025 16:30", "09/09/2025 17:00", "09/09/2025 17:15"],
-    "Narasi Berita": [
-        "Berita A dicek dan masuk tahap validasi.",
-        "Berita B terindikasi hoaks.",
-        "Berita C sedang dalam proses klarifikasi."
-    ],
-    "Aksi": ["Silahkan menunggu konfirmasi selanjutnya"] * 3
-}
-
-df = pd.DataFrame(data)
+# Bikin DataFrame kosong dengan kolom sesuai template
+columns = ["Waktu", "Narasi Berita", "Prediksi", "Hasil Verifikasi", "Referensi", "Report"]
+df = pd.DataFrame(columns=columns)
 
 # Tampilkan tabel
 st.dataframe(df, use_container_width=True)
