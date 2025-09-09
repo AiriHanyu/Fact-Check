@@ -1,6 +1,6 @@
 import streamlit as st
-import pandas as pd
-from datetime import datetime
+
+set_background_color("#A9A9A9")
 
 st.title("Riwayat Verifikasi")
 
