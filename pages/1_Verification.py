@@ -9,19 +9,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# CSS custom biar tabel lebih besar
-st.markdown("""
-    <style>
-    .big-font-table table {
-        font-size:20px !important;     /* atur ukuran font isi tabel */
-    }
-    .big-font-table th {
-        font-size:22px !important;     /* atur ukuran font header */
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-# Data dummy
+# Contoh data dummy
 data = {
     "Waktu": ["09/09/2025 16:30", "09/09/2025 17:00", "09/09/2025 17:15"],
     "Narasi Berita": [
@@ -34,7 +22,5 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Tampilkan tabel dengan class custom
-st.markdown('<div class="big-font-table">', unsafe_allow_html=True)
-st.table(df)
-st.markdown('</div>', unsafe_allow_html=True)
+# Tampilkan tabel
+st.dataframe(df, use_container_width=True)
