@@ -100,14 +100,3 @@ if st.session_state.tab:
             st.markdown("<hr style='border: 1.5px solid black; margin: 20px 0;'>", unsafe_allow_html=True)
             
             st.markdown("<br>", unsafe_allow_html=True)
-
-
-if view:
-    if st.session_state.tab == "TEXT" and user_text:
-        proba = classify(user_text)[0]
-        render_prediction(proba)
-
-        st.session_state.last_result = {
-            "text": user_text,
-            "proba": proba.tolist()
-        }
