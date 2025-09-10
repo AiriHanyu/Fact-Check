@@ -118,6 +118,7 @@ if st.session_state.tab:
                 top_prob  = proba[top_idx] * 100
                 # prediksi_str sekarang hanya 1 nilai (yang tertinggi)
                 prediksi_str = f"{top_label}: {top_prob:.1f}%"
+                ringkas_narasi = (raw_text[:180] + "…") if len(raw_text) > 180 else raw_text
                 st.session_state.history.append({
                     "Waktu": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     "Narasi Berita": ringkas_narasi,
@@ -130,6 +131,7 @@ if st.session_state.tab:
             st.markdown("<br>", unsafe_allow_html=True)
             st.markdown("<hr style='border: 1.5px solid black; margin: 20px 0;'>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
+
 
 
 
