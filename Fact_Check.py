@@ -3,6 +3,11 @@ import numpy as np
 from datetime import datetime
 from util import set_background_color, get_text_from_url, read_uploaded_file, classify, circle_progress
 from textwrap import dedent
+import streamlit as st
+
+def ensure_state():
+    st.session_state.setdefault("tab", None)
+    st.session_state.setdefault("history", []) 
 
 set_background_color("#A9A9A9")
 
@@ -130,6 +135,7 @@ if st.session_state.tab:
             st.markdown("<br>", unsafe_allow_html=True)
             st.markdown("<hr style='border: 1.5px solid black; margin: 20px 0;'>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
+
 
 
 
