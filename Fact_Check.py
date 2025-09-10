@@ -122,13 +122,14 @@ if st.session_state.tab:
                     "Waktu": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     "Narasi Berita": ringkas_narasi,
                     "Prediksi": prediksi_str,
-                    "Hasil Verifikasi": hasil_label,
+                    "Hasil Verifikasi": "",
                     "Referensi": referensi,
-                    "Report": ""  # isi nanti jika ada fitur lapor
+                    "Report": ""  
                 })
 
             st.markdown("<br>", unsafe_allow_html=True)
             st.markdown("<hr style='border: 1.5px solid black; margin: 20px 0;'>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
+
 
 
