@@ -25,7 +25,4 @@ with c2:
 df = pd.DataFrame(history, columns=columns)
 st.dataframe(df, use_container_width=True)
 
-# (Opsional) Unduh CSV
-if not df.empty:
-    csv = df.to_csv(index=False).encode("utf-8")
-    st.download_button("Unduh CSV", data=csv, file_name="riwayat_verifikasi.csv", mime="text/csv")
+
