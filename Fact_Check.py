@@ -113,14 +113,12 @@ if st.session_state.tab:
                 render_prediction(proba)
 
                 # --- SIMPAN KE HISTORY UNTUK PAGE RIWAYAT ---
-prediksi_str = f"HOAKS: {proba[0]*100:.1f}%, VALID: {proba[1]*100:.1f}%"
+                top_idx   = int(np.argmax(proba))
+                top_label = labels[top_idx]
+                top_prob  = float(proba[top_idx]) * 100
+                prediksi_str = f"HOAKS: {proba[0]*100:.1f}%, VALID: {proba[1]*100:.1f}%"
+                ringkas_narasi = (raw_text[:180] + "…") if len(raw_text) > 180 else raw_text
 
-top_idx = int(np.argmax(proba))
-top_label = labels[top_idx]                 # "HOAKS" atau "VALID" -> ini yang diambil
-top_prob = float(proba[top_idx]) * 100      # persen tertinggi
-
-ringkas_narasi = (raw_text[:180] + "…") if len(raw_text) > 180 else raw_text
-referensi = referensi  # sesuai logika kamu sebelumnya
 
                 st.session_state.history.append({
                     "Waktu": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -134,6 +132,15 @@ referensi = referensi  # sesuai logika kamu sebelumnya
             st.markdown("<br>", unsafe_allow_html=True)
             st.markdown("<hr style='border: 1.5px solid black; margin: 20px 0;'>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
+
+
+
+
+
+
+
+
+
 
 
 
