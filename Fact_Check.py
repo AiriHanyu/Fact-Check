@@ -63,7 +63,7 @@ def render_prediction(proba):
     </div>
     """), unsafe_allow_html=True)
 
-view = True
+view = False
 user_text = user_url = None
 uploaded_file = None
 
@@ -130,6 +130,7 @@ if st.session_state.tab:
             st.markdown("<br>", unsafe_allow_html=True)
             st.markdown("<hr style='border: 1.5px solid black; margin: 20px 0;'>", unsafe_allow_html=True)
             st.markdown("<br>", unsafe_allow_html=True)
+
 
 
 
